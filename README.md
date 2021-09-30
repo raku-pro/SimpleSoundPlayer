@@ -1,6 +1,6 @@
-# SimpleSoundPlayer
+# SimpleSoundPlayer for iOS
 
-SoundFontを読み込んで音の再生と停止を提供するライブラリです。
+SimpleSoundPlayerはswiftで実装されたSoundFontを読み込んで音の再生と停止を提供するライブラリです。
 SoundFontファイルは別途入手する必要があります。
 
 ※SoundFontは、ピアノなどの様々な音色のデータフォーマットです。参考：[wikipedia SoundFont](https://ja.wikipedia.org/wiki/SoundFont)
