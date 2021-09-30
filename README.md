@@ -23,6 +23,10 @@ player.startNote(60, velocity: 60) // ピアノの中央ドの音を再生する
 player.stopNote(60)
 ```
 
+# デモ
+
+[SimpleSoundPlayerDemo](https://github.com/raku-pro/SimpleSoundPlayerDemo)を確認してください。
+
 # LICENSE
 
 MIT
