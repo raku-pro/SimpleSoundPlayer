@@ -20,7 +20,7 @@ import AVFoundation
 public final class SimpleSoundPlayer {
     private let audioEngine = AVAudioEngine()
     private let sampler = AVAudioUnitSampler()
-    private let soundBankURL: URL
+    private let soundBankURL: URL?
     
     /// 現在再生中のnote numberを保持する
     public private(set) var currentNotes = Set<UInt8>()
@@ -28,7 +28,7 @@ public final class SimpleSoundPlayer {
     
     /// SoundFontのパスを表すURLでSoundPlayerを生成する
     /// - Parameter soundBankURL:
-    public init(soundBankURL: URL) {
+    public init(soundBankURL: URL? = nil) {
         self.soundBankURL = soundBankURL
         audioEngine.attach(sampler)
         audioEngine.connect(sampler, to: audioEngine.mainMixerNode, format: nil)
@@ -51,10 +51,12 @@ public final class SimpleSoundPlayer {
     ///   - bankMSB: SondFontに従って設定する値(通常デフォルトのまま)
     ///   - bankLSB: SondFontに従って設定する値(通常デフォルトのまま)
     public func prepare(program: UInt8 = 0, bankMSB: Int = kAUSampler_DefaultMelodicBankMSB, bankLSB: Int = kAUSampler_DefaultBankLSB) throws {
-        try sampler.loadSoundBankInstrument(at: soundBankURL,
-                                        program: program,
-                                        bankMSB: UInt8(bankMSB),
-                                        bankLSB: UInt8(bankLSB))
+        if let soundBankURL = soundBankURL {
+            try sampler.loadSoundBankInstrument(at: soundBankURL,
+                                            program: program,
+                                            bankMSB: UInt8(bankMSB),
+                                            bankLSB: UInt8(bankLSB))
+        }
         try audioEngine.start()
     }
     
