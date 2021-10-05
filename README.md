@@ -8,6 +8,16 @@ SoundFontファイルは別途入手する必要があります。
 # 使い方
 
 ## セットアップ
+
+### iOSデフォルトの音色を利用する場合
+
+```swift
+let player = SimpleSoundPlayer()
+try! player.prepare()
+```
+
+### SoundFontの音色(ピアノなど）を利用する場合
+
 ```swift
 let sondFontURL = // SoundFontのパスを表すURL
 let player = SimpleSoundPlayer(soundBankURL: soundFontURL)
